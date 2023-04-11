@@ -1,14 +1,9 @@
-FROM openjdk:8-jdk-alpine
-
+FROM openjdk:8-jdk-alpine as builder
 WORKDIR /app
+RUN apk add --update git
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+WORKDIR /app/boxfuse-sample-java-war-hello
+RUN ./mvnw package
 
-RUN apk add --no-cache git && \
-    git clone https://github.com/tongueroo/demo-java.git && \
-    cd demo-java && \
-    ./mvnw package
-
-FROM alpine:latest
-
-COPY --from=0 /app/demo-java/target/demo-java-1.0-SNAPSHOT.jar /app.jar
-
-CMD ["java", "-jar", "/app.jar"]
+FROM tomcat:9.0.38-jdk8-openjdk-slim
+COPY --from=builder /app/boxfuse-sample-java-war-hello/target/hello-1.0.war /usr/local/tomcat/webapps/
