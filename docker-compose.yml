@@ -1,18 +1,14 @@
-version: '3.7'
+version: "3.7"
 
 services:
-  builder:
-    image: maven:3.6.3-jdk-8
-    working_dir: /app
-    volumes:
-      - .:/app
-    command: mvn clean package
-
-  app:
-    image: openjdk:8-jre-alpine
+  build:
+    build: ./build
+    image: build
+  prod:
+    build: ./prod
+    image: prod
     ports:
       - "8080:8080"
-    volumes:
-      - ./demo/target/demo-0.0.1-SNAPSHOT.jar:/app/demo.jar
-    command: java -jar /app/demo.jar
+    depends_on:
+      - build
 
