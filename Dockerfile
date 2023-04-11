@@ -12,9 +12,3 @@ FROM alpine:latest
 COPY --from=0 /app/demo-java/target/demo-java-1.0-SNAPSHOT.jar /app.jar
 
 CMD ["java", "-jar", "/app.jar"]
-
-FROM tomcat:alpine
-
-COPY demo-java/target/demo-java-1.0-SNAPSHOT.war $CATALINA_HOME/webapps/
-
-CMD ["catalina.sh", "run"]
