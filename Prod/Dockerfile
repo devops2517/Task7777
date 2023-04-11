@@ -1,3 +1,2 @@
 FROM tomcat:9.0.38-jdk8-openjdk-slim
-RUN apt-get update && apt-get -y install ant
-CMD ["catalina.sh", "run"]
+COPY ./target/hello-1.0.war /usr/local/tomcat/webapps/
