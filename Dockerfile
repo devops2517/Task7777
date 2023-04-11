@@ -1,4 +1,4 @@
-FFROM openjdk:8-jdk-alpine as builder
+FROM openjdk:8-jdk-alpine as builder
  WORKDIR /app
  RUN apk add --update git
  RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
