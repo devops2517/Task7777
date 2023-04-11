@@ -2,10 +2,10 @@ version: "3.7"
 
 services:
   build:
-    build: ./build
+    build: ./
     image: build
   prod:
-    build: ./prod
+    build: ./Prod
     image: prod
     ports:
       - "8080:8080"
