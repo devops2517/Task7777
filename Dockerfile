@@ -1,4 +1,5 @@
 FROM openjdk:8-jdk-alpine as builder
+RUN apt install git
  WORKDIR /build
 
  RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git \
