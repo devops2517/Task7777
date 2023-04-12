@@ -1,2 +1,2 @@
-FROM tomcat:9.0.41-jdk11-openjdk-slim-buster
-CMD ["catalina.sh", "run"]
+FROM tomcat:9-jre8-alpine
+COPY --from=builder /app/target/hello-1.0.war /usr/local/tomcat/webapps/hello.war
