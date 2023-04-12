@@ -1,15 +1,7 @@
+FROM maven:3.6.3-jdk-11-slim AS builder
 
-FROM openjdk:8-jdk-alpine
+WORKDIR /build
 
-WORKDIR /app
-
-RUN apk add --no-cache git && \
-    git clone https://github.com/tongueroo/demo-java.git && \
-    cd demo-java && \
-    ./mvnw package
-
-FROM alpine:latest
-
-COPY --from=0 /app/demo-java/target/demo-java-1.0-SNAPSHOT.jar /app.jar
-
-CMD ["java", "-jar", "/app.jar"]
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git \
+    && cd boxfuse-sample-java-war-hello \
+    && mvn package -DskipTests
