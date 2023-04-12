@@ -5,7 +5,6 @@ services:
     build: ./builder
     volumes:
       - ./app:/app
-    command: mvn clean package
   prod:
     build: ./Prod
     ports:
