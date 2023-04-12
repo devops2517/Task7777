@@ -1,5 +1,5 @@
-FROM maven:3.6.3-jdk-11-slim AS builder
+FROM maven:3.6.3-jdk-11 AS builder
 
-WORKDIR /builder
+WORKDIR /build
 
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
