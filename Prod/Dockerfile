@@ -1,5 +1,5 @@
 FROM tomcat:alpine
 
-COPY demo-java/target/demo-java-1.0-SNAPSHOT.war $CATALINA_HOME/webapps/
+COPY /build/boxfuse-sample-java-war-hello/target/hello-1.0.war $CATALINA_HOME/webapps/
 
 CMD ["catalina.sh", "run"]
