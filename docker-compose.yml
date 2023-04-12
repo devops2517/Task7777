@@ -1,19 +1,14 @@
-version: '3.7'
+version: '3'
+
 services:
   builder:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: ./builder
     volumes:
-      - .:/app
-    working_dir: /app
-    command: ant build
+      - ./app:/app
+    command: mvn clean package
   prod:
-    build:
-      context: .
-      dockerfile: ./Prod/Dockerfile
+    build: ./prod
     ports:
       - "8080:8080"
     depends_on:
       - builder
-
