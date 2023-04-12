@@ -3,12 +3,10 @@ version: "3.7"
 services:
   builder:
     build: ./builder
-    volumes:
-      - ./build/boxfuse-sample-java-war-hello/target/hello-1.0.war
   prod:
     build: ./Prod
     volumes:
-      - ./usr/local/tomcat/webapps/
+      - ./build/boxfuse-sample-java-war-hello/target/hello-1.0.war
     ports:
       - "8080:8080"
     depends_on:
